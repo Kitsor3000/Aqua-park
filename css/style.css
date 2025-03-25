@@ -1,0 +1,267 @@
+/* Глобальні стилі */
+:root {
+    --primary-color: #00a8e8;
+    --secondary-color: #0077b6;
+    --accent-color: #ff9e00;
+    --light-color: #f8f9fa;
+    --dark-color: #343a40;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  body {
+    background-color: #f0f8ff;
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  header {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 1rem 0;
+  }
+  
+  nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    margin: 0 0.5rem;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  
+  nav ul li a:hover, nav ul li a.active {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  main {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* Секція пошуку та фільтрів */
+  #search-section {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  #search {
+    flex-grow: 1;
+    padding: 0.75rem;
+    border: 2px solid var(--primary-color);
+    border-radius: 5px;
+    font-size: 1rem;
+    max-width: 500px;
+  }
+  
+  #filter-type {
+    padding: 0.75rem;
+    border: 2px solid var(--primary-color);
+    border-radius: 5px;
+    background-color: white;
+    font-size: 1rem;
+  }
+  
+  /* Стилі для атракціонів */
+  .attractions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 1.5rem;
+  }
+  
+  .attraction-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .attraction-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  .attraction-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .attraction-card h3 {
+    padding: 1rem 1rem 0.5rem;
+    color: var(--secondary-color);
+  }
+  
+  .attraction-card p {
+    padding: 0 1rem 1rem;
+    color: #666;
+  }
+  
+  .attraction-card button {
+    display: block;
+    width: calc(100% - 2rem);
+    margin: 0 1rem 1rem;
+    padding: 0.75rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+  }
+  
+  .attraction-card button:hover {
+    background-color: var(--secondary-color);
+  }
+  
+  /* Стилі для корзини */
+  #cart {
+    position: sticky;
+    top: 20px;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-left: 2rem;
+  }
+  
+  #cart h3 {
+    margin-bottom: 1rem;
+    color: var(--secondary-color);
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.5rem;
+  }
+  
+  #cart-items li {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eee;
+  }
+  
+  #cart-items button {
+    background: none;
+    border: none;
+    color: var(--danger-color);
+    cursor: pointer;
+    font-weight: bold;
+    margin-left: 1rem;
+  }
+  
+  #cart-total {
+    font-weight: bold;
+    margin: 1rem 0;
+    font-size: 1.1rem;
+  }
+  
+  #checkout {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+  }
+  
+  #checkout:hover {
+    background-color: #e68a00;
+  }
+  
+  /* Модальне вікно */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .modal-content {
+    background-color: white;
+    margin: 10% auto;
+    padding: 2rem;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+  }
+  
+  .close {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  
+  #order-form input {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  #order-form button {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: var(--success-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  /* Адаптивність */
+  @media (max-width: 768px) {
+    .attractions-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    #cart {
+      position: static;
+      margin: 2rem 0 0;
+    }
+    
+    #search-section {
+      flex-direction: column;
+    }
+  }
+  
+  footer {
+    text-align: center;
+    padding: 1.5rem;
+    background-color: var(--dark-color);
+    color: white;
+    margin-top: 2rem;
+  }
