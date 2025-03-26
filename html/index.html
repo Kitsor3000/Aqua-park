@@ -3,70 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Аквапарк "Водний світ"</title>
+    <title>Аквапарк "AquaWave" - Контакти</title>
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <header>
-        <h1>Ласкаво просимо до Аквапарку "Водний світ"!</h1>
-        <nav>
-            <ul>
-                <li><a href="#" class="active">Головна</a></li>
-                <li><a href="#attractions">Атракціони</a></li>
-                <li><a href="#prices">Ціни</a></li>
-                <li id="admin-link" style="display:none;"><a href="admin.html">Адмін</a></li>
-            </ul>
-        </nav>
+        <div class="logo">
+        <img src="../images/logo.png" alt="АКВАПАРК AquaWave" class="logo-img">
+        <h1>АКВАПАРК "AquaWave"</h1>
+       </div>
+    <nav>
+        <ul>
+            <li><a href="#">ГОЛОВНА</a></li>
+            <li><a href="#">АТРАКЦІОНИ</a></li>
+            <li><a href="#">ЦІНИ</a></li>
+            <li><a href="#">КОНТАКТИ</a></li>
+        </ul>
+    </nav>
+    
     </header>
 
     <main>
-        <section id="search-section">
-            <input type="text" id="search" placeholder="Пошук атракціонів...">
-            <select id="filter-type">
-                <option value="all">Всі атракціони</option>
-                <option value="сімейний">Сімейні</option>
-                <option value="екстремальний">Екстремальні</option>
-                <option value="дитячий">Дитячі</option>
-            </select>
+        <section class="contact-hero">
+            <h2>КОНТАКТИ</h2>
+            <p>Виникли запитання? Потрібна допомога? Ми тут, щоб допомогти – зв'яжіться з нами!</p>
         </section>
 
-        <section id="attractions">
-            <h2>Наші атракціони</h2>
-            <div id="attractions-container" class="attractions-grid">
-                <!-- Атракціони будуть додані через JavaScript -->
+        <section class="contact-info">
+            <div class="contact-cards">
+                <div class="contact-card">
+                    <h3>ТЕЛЕФОНИ ТА E-MAIL</h3>
+                    <div class="contact-item">
+                        <h4>Підтримка клієнтів</h4>
+                        <p><i class="fas fa-phone"></i> +380633344400</p>
+                    </div>
+                    <div class="contact-item">
+                        <h4>Бронювання готелів:</h4>
+                        <p><i class="fas fa-phone"></i> +38030259100</p>
+                    </div>
+                    <div class="contact-item">
+                        <h4>Підтримка клієнтів</h4>
+                        <p><i class="fas fa-envelope"></i> aqua@AquaWave.com</p>
+                    </div>
+                </div>
+
+                <div class="contact-card zones">
+                    <h3>ЗОНИ АКВАПАРКУ</h3>
+                    <div class="zone-grid">
+                        <div class="zone-item">ЗОНА ПРОК</div>
+                        <div class="zone-item">ЗОНА ХВИЛЬОВОГО БАСЕЙНУ</div>
+                        <div class="zone-item">ЗОНА КВИТКИ</div>
+                        <div class="zone-item">ЗОНА SPA</div>
+                        <div class="zone-item">ЗОНА ІНФІНІТІ</div>
+                        <div class="zone-item">ЗОНА НАВИГО РОДИТЕЛЯ</div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section id="cart-section">
-            <div id="cart">
-                <h3>Ваші квитки</h3>
-                <ul id="cart-items"></ul>
-                <p id="cart-total">Загальна сума: 0 грн</p>
-                <button id="checkout">Оформити замовлення</button>
+        <section class="social-media">
+            <h3>Ми у соцмережах</h3>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-telegram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>© 2023 Аквапарк "Водний світ". Всі права захищені.</p>
-    </footer>
-
-    <!-- Модальне вікно для оформлення замовлення -->
-    <div id="order-modal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Оформлення замовлення</h2>
-            <form id="order-form">
-                <input type="text" placeholder="Ім'я" required>
-                <input type="email" placeholder="Email" required>
-                <input type="tel" placeholder="Телефон" required>
-                <button type="submit">Підтвердити</button>
-            </form>
+        <div class="footer-content">
+            <p>© 2025 Аквапарк "AquaWave". Всі права захищені.</p>
+            <div class="footer-links">
+                <a href="#">Політика конфіденційності</a>
+                <a href="#">Умови використання</a>
+                <a href="#">Карта сайту</a>
+            </div>
         </div>
-    </div>
-
-    <script type="module" src="js/main.js"></script>
-    <script type="module" src="js/cart.js"></script>
-    <script type="module" src="js/auth.js"></script>
+    </footer>
+    <script src="..//js/footer.js" type="module"></script>
 </body>
 </html>

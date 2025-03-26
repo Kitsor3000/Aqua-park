@@ -1,267 +1,283 @@
 /* Глобальні стилі */
 :root {
-    --primary-color: #00a8e8;
-    --secondary-color: #0077b6;
-    --accent-color: #ff9e00;
-    --light-color: #f8f9fa;
-    --dark-color: #343a40;
-    --success-color: #28a745;
-    --danger-color: #dc3545;
-  }
-  
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-  
-  body {
-    background-color: #f0f8ff;
-    color: #333;
-    line-height: 1.6;
-  }
-  
+  --primary-blue: #00a8e8;
+  --dark-blue: #0077b6;
+  --light-blue: #f0f8ff;
+  --white: #ffffff;
+  --black: #333333;
+  --gray: #777777;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  background-color: var(--light-blue);
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: url('../images/fon.png') no-repeat center center fixed;
+  background-size: cover;
+  color: rgb(255, 255, 255);
+  text-align: center;
+}
+
+/* Шапка */
+header {
+  position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+  background: rgba(1, 64, 98);
+  color: var(--white);
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Стилі для логотипа */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  height: 100%;
+}
+
+.logo-img.force-transparent {
+  position: relative;
+  isolation: isolate;
+}
+
+.logo-img.force-transparent::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: inherit;
+  mix-blend-mode: screen;
+  z-index: -1;
+  opacity: 0.5;
+}
+
+.logo-img {
+  height: 50px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 5px rgba(0,0,0,0.2));
+
+}
+
+
+
+.logo h1 {
+  color: rgb(3, 159, 243);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+nav ul {
+  color: rgb(3, 159, 243);
+  display: flex;
+  list-style: none;
+}
+
+nav ul li a {
+  color: rgb(3, 159, 243);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  margin: 0 0.5rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border-bottom: 2px solid transparent;
+}
+
+nav ul li a:hover {
+  border-bottom: 2px solid var(--white);
+}
+
+/* Основний контент */
+main {
+  padding: 6rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.contact-hero {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.contact-hero h2 {
+  font-size: 2.5rem;
+  color: var(--dark-blue);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.contact-hero p {
+  font-size: 1.2rem;
+  color: var(--gray);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Картки контактів */
+.contact-cards {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.contact-card {
+  flex: 1;
+  background: var(--white);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.contact-card h3 {
+  color: var(--dark-blue);
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  border-bottom: 2px solid var(--primary-blue);
+  padding-bottom: 0.5rem;
+}
+
+.contact-item {
+  margin-bottom: 1.5rem;
+}
+
+.contact-item h4 {
+  color: var(--black);
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.contact-item p {
+  color: var(--gray);
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Зони аквапарку */
+.zones .zone-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.zone-item {
+  background: var(--primary-blue);
+  color: var(--white);
+  padding: 1rem;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.zone-item:hover {
+  background: var(--dark-blue);
+  transform: translateY(-3px);
+}
+
+/* Соціальні мережі */
+.social-media {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.social-media h3 {
+  color: var(--dark-blue);
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.social-icons a {
+  color: var(--dark-blue);
+  background: var(--white);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.social-icons a:hover {
+  background: var(--dark-blue);
+  color: var(--white);
+  transform: translateY(-3px);
+}
+
+
+
+ /* Підвал */
+footer {
+  position: fixed;
+  bottom: 0;
+    left: 0;
+    right: 0;
+  background: rgba(1, 66, 101, 0.7); /* Напівпрозорий синій */
+  color: var(--white);
+  text-align: center;
+  padding: 1.5rem;
+  margin-top: 3rem;
+  width: 100%;
+  backdrop-filter: blur(5px); /* Додаємо ефект розмиття для кращої читабельності */
+  z-index: 10;
+}
+
+
+body.scrolled footer {
+  box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
+  background: rgba(0, 119, 182, 0.9);
+}
+
+
+
+/* Адаптивність */
+@media (max-width: 768px) {
   header {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: white;
-    padding: 1rem 2rem;
-    text-align: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      flex-direction: column;
+      text-align: center;
   }
   
   nav ul {
-    display: flex;
-    justify-content: center;
-    list-style: none;
-    padding: 1rem 0;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
   }
   
-  nav ul li a {
-    color: white;
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    margin: 0 0.5rem;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-  }
-  
-  nav ul li a:hover, nav ul li a.active {
-    background-color: rgba(255, 255, 255, 0.2);
-  }
-  
-  main {
-    padding: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  /* Секція пошуку та фільтрів */
-  #search-section {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 2rem;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-  
-  #search {
-    flex-grow: 1;
-    padding: 0.75rem;
-    border: 2px solid var(--primary-color);
-    border-radius: 5px;
-    font-size: 1rem;
-    max-width: 500px;
-  }
-  
-  #filter-type {
-    padding: 0.75rem;
-    border: 2px solid var(--primary-color);
-    border-radius: 5px;
-    background-color: white;
-    font-size: 1rem;
-  }
-  
-  /* Стилі для атракціонів */
-  .attractions-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-top: 1.5rem;
-  }
-  
-  .attraction-card {
-    background: white;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-  
-  .attraction-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-  }
-  
-  .attraction-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-  }
-  
-  .attraction-card h3 {
-    padding: 1rem 1rem 0.5rem;
-    color: var(--secondary-color);
-  }
-  
-  .attraction-card p {
-    padding: 0 1rem 1rem;
-    color: #666;
-  }
-  
-  .attraction-card button {
-    display: block;
-    width: calc(100% - 2rem);
-    margin: 0 1rem 1rem;
-    padding: 0.75rem;
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s;
-  }
-  
-  .attraction-card button:hover {
-    background-color: var(--secondary-color);
-  }
-  
-  /* Стилі для корзини */
-  #cart {
-    position: sticky;
-    top: 20px;
-    background: white;
-    padding: 1.5rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-left: 2rem;
-  }
-  
-  #cart h3 {
-    margin-bottom: 1rem;
-    color: var(--secondary-color);
-    border-bottom: 2px solid var(--primary-color);
-    padding-bottom: 0.5rem;
-  }
-  
-  #cart-items li {
-    display: flex;
-    justify-content: space-between;
-    padding: 0.5rem 0;
-    border-bottom: 1px solid #eee;
-  }
-  
-  #cart-items button {
-    background: none;
-    border: none;
-    color: var(--danger-color);
-    cursor: pointer;
-    font-weight: bold;
-    margin-left: 1rem;
-  }
-  
-  #cart-total {
-    font-weight: bold;
-    margin: 1rem 0;
-    font-size: 1.1rem;
-  }
-  
-  #checkout {
-    width: 100%;
-    padding: 0.75rem;
-    background-color: var(--accent-color);
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s;
-  }
-  
-  #checkout:hover {
-    background-color: #e68a00;
-  }
-  
-  /* Модальне вікно */
-  .modal {
-    display: none;
-    position: fixed;
-    z-index: 100;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-  
-  .modal-content {
-    background-color: white;
-    margin: 10% auto;
-    padding: 2rem;
-    border-radius: 10px;
-    width: 90%;
-    max-width: 500px;
-    position: relative;
-  }
-  
-  .close {
-    position: absolute;
-    right: 1rem;
-    top: 1rem;
-    font-size: 1.5rem;
-    cursor: pointer;
-  }
-  
-  #order-form input {
-    display: block;
-    width: 100%;
-    padding: 0.75rem;
-    margin-bottom: 1rem;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-  }
-  
-  #order-form button {
-    width: 100%;
-    padding: 0.75rem;
-    background-color: var(--success-color);
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  /* Адаптивність */
-  @media (max-width: 768px) {
-    .attractions-grid {
-      grid-template-columns: 1fr;
-    }
-    
-    #cart {
-      position: static;
-      margin: 2rem 0 0;
-    }
-    
-    #search-section {
+
+  .contact-cards {
       flex-direction: column;
-    }
   }
   
-  footer {
-    text-align: center;
-    padding: 1.5rem;
-    background-color: var(--dark-color);
-    color: white;
-    margin-top: 2rem;
+  .zones .zone-grid {
+      grid-template-columns: 1fr;
   }
+}
