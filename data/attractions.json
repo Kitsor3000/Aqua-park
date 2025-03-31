@@ -1,0 +1,114 @@
+{
+    "attractions": [
+      {
+        "id": 1,
+        "name": "Гірка Цунамі",
+        "description": "Найвища гірка в нашому аквапарку з падінням з 25 метрів",
+        "price": 150,
+        "image": "../images/attractions/tsunami1.png",
+        "category": "екстремальні",
+        "minHeight": 140,
+        "duration": "2 хвилини"
+      },
+      {
+        "id": 2,
+        "name": "Лінива річка",
+        "description": "Повільний сплав по річці на надувних кругах",
+        "price": 80,
+        "image": "../images/attractions/lazy-river.png",
+        "category": "сімейні",
+        "minHeight": 0,
+        "duration": "15 хвилин"
+      },
+      {
+        "id": 3,
+        "name": "Хвильовий басейн",
+        "description": "Басейн з штучними хвилями висотою до 1.5 метрів",
+        "price": 100,
+        "image": "../images/attractions/wave-pool.png",
+        "category": "сімейні",
+        "minHeight": 0,
+        "duration": "необмежено"
+      },
+      {
+        "id": 4,
+        "name": "Чорна діра",
+        "description": "Закрита гірка з повними темряви поворотами",
+        "price": 120,
+        "image": "../images/attractions/dark.png",
+        "category": "екстремальні",
+        "minHeight": 130,
+        "duration": "1 хвилина"
+      },
+      {
+        "id": 5,
+        "name": "Дитячий майданчик",
+        "description": "Безпечні гірки та фонтани для дітей до 12 років",
+        "price": 50,
+        "image": "../images/attractions/children.png",
+        "category": "дитячі",
+        "minHeight": 0,
+        "maxHeight": 140,
+        "duration": "необмежено"
+      },
+      {
+        "id": 6,
+        "name": "Рафтинг",
+        "description": "Спуск на надувних плотах по штучній річці",
+        "price": 200,
+        "image": "../images/attractions/rafting.png",
+        "category": "екстремальні",
+        "minHeight": 140,
+        "duration": "5 хвилин"
+      }
+    ],
+    "prices": {
+      "individual": [
+        {
+          "type": "Дорослий (цілий день)",
+          "price": 500
+        },
+        {
+          "type": "Дитячий (цілий день)",
+          "price": 300
+        },
+        {
+          "type": "Дорослий (4 години)",
+          "price": 350
+        },
+        {
+          "type": "Дитячий (4 години)",
+          "price": 250
+        }
+      ],
+      "group": [
+        {
+          "type": "Група 10+ осіб",
+          "price": 450,
+          "note": "на людину"
+        },
+        {
+          "type": "Група 20+ осіб",
+          "price": 400,
+          "note": "на людину"
+        },
+        {
+          "type": "Шкільні групи",
+          "price": 350,
+          "note": "на людину"
+        }
+      ],
+      "season": [
+        {
+          "type": "Сезонний абонемент",
+          "price": 3000,
+          "note": "3 місяці"
+        },
+        {
+          "type": "Річний абонемент",
+          "price": 8000,
+          "note": "12 місяців"
+        }
+      ]
+    }
+  }

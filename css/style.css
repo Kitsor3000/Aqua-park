@@ -1,283 +1,511 @@
-/* Глобальні стилі */
 :root {
+
   --primary-blue: #00a8e8;
   --dark-blue: #0077b6;
-  --light-blue: #f0f8ff;
+  --light-blue: #c3def7;
   --white: #ffffff;
   --black: #333333;
   --gray: #777777;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 body {
   background-color: var(--light-blue);
   line-height: 1.6;
-  margin: 0;
-  padding: 0;
-  font-family: 'Poppins', sans-serif;
+  color: var(--black);
   background: url('../images/fon.png') no-repeat center center fixed;
   background-size: cover;
-  color: rgb(255, 255, 255);
-  text-align: center;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: -1;
 }
 
 /* Шапка */
 header {
-  position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-  background: rgba(1, 64, 98);
-  color: var(--white);
-  padding: 1.5rem 2rem;
+  position: sticky;
+  top: 0;
+  background: rgba(1, 64, 98, 0.9);
+  padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  box-shadow: var(--shadow);
 }
 
-/* Стилі для логотипа */
+
 .logo {
   display: flex;
   align-items: center;
   gap: 15px;
-  height: 100%;
-}
-
-.logo-img.force-transparent {
-  position: relative;
-  isolation: isolate;
-}
-
-.logo-img.force-transparent::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: inherit;
-  mix-blend-mode: screen;
-  z-index: -1;
-  opacity: 0.5;
 }
 
 .logo-img {
   height: 50px;
   width: auto;
-  object-fit: contain;
-  filter: drop-shadow(0 0 5px rgba(0,0,0,0.2));
-
 }
 
 
 
 .logo h1 {
-  color: rgb(3, 159, 243);
+  color: var(--white);
   font-size: 1.5rem;
   font-weight: 700;
-  letter-spacing: 1px;
+
 }
 
+
+
 nav ul {
-  color: rgb(3, 159, 243);
+
   display: flex;
   list-style: none;
+  gap: 1.5rem;
 }
 
 nav ul li a {
-  color: rgb(3, 159, 243);
+  color: var(--white);
   text-decoration: none;
-  padding: 0.5rem 1rem;
-  margin: 0 0.5rem;
   font-weight: 500;
   transition: all 0.3s ease;
-  border-bottom: 2px solid transparent;
+  padding: 0.5rem 0;
+  position: relative;
 }
 
-nav ul li a:hover {
+nav ul li a.active {
   border-bottom: 2px solid var(--white);
 }
 
-/* Основний контент */
-main {
-  padding: 6rem 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
+nav ul li a:hover {
+  color: #aad8ff;
 }
 
-.contact-hero {
-  text-align: center;
-  margin-bottom: 3rem;
-}
-
-.contact-hero h2 {
-  font-size: 2.5rem;
-  color: var(--dark-blue);
-  margin-bottom: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.contact-hero p {
-  font-size: 1.2rem;
-  color: var(--gray);
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-/* Картки контактів */
-.contact-cards {
-  display: flex;
-  gap: 2rem;
-  margin-bottom: 3rem;
-}
-
-.contact-card {
-  flex: 1;
-  background: var(--white);
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-}
-
-.contact-card h3 {
-  color: var(--dark-blue);
-  margin-bottom: 1.5rem;
-  font-size: 1.5rem;
-  border-bottom: 2px solid var(--primary-blue);
-  padding-bottom: 0.5rem;
-}
-
-.contact-item {
-  margin-bottom: 1.5rem;
-}
-
-.contact-item h4 {
-  color: var(--black);
-  margin-bottom: 0.5rem;
-  font-size: 1.1rem;
-}
-
-.contact-item p {
-  color: var(--gray);
-  font-size: 1rem;
+#cart-btn {
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
-/* Зони аквапарку */
-.zones .zone-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
+/* Герой секція */
+.hero {
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--white);
+  position: relative;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),  url('../images/attractions/pool.png') no-repeat center center; 
+  background-size: cover;
 }
 
-.zone-item {
-  background: var(--primary-blue);
+.hero-content {
+  max-width: 800px;
+  padding: 2rem;
+}
+
+.hero h2 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+
+}
+
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.btn {
+  display: inline-block;
+  background-color: var(--primary-blue);
   color: var(--white);
-  padding: 1rem;
-  border-radius: 5px;
-  text-align: center;
-  font-weight: 500;
+  padding: 0.8rem 1.5rem;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: var(--dark-blue);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow);
+}
+
+/* Пошук і сортування */
+#search-section {
+  background-color: var(--white);
+  padding: 2rem 0;
+  box-shadow: var(--shadow);
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.search-box {
+  display: flex;
+  max-width: 600px;
+  margin: 0 auto 1rem;
+}
+
+#search-input {
+  flex: 1;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--gray);
+  border-radius: 30px 0 0 30px;
+  font-size: 1rem;
+  outline: none;
+}
+
+#search-btn {
+  padding: 0 1.5rem;
+  background-color: var(--primary-blue);
+  color: var(--white);
+  border: none;
+  border-radius: 0 30px 30px 0;
+  cursor: pointer;
   transition: all 0.3s ease;
 }
 
-.zone-item:hover {
-  background: var(--dark-blue);
-  transform: translateY(-3px);
+#search-btn:hover {
+  background-color: var(--dark-blue);
 }
 
-/* Соціальні мережі */
-.social-media {
+.sort-options {
   text-align: center;
-  margin-top: 3rem;
 }
 
-.social-media h3 {
+#sort-select {
+  padding: 0.5rem 1rem;
+  border-radius: 30px;
+  border: 1px solid var(--gray);
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* Атракціони */
+#attractions {
+  padding: 4rem 0;
+}
+
+.attractions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.attraction-card {
+  background-color: var(--white);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: all 0.3s ease;
+}
+
+.attraction-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.attraction-img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.attraction-info {
+  padding: 1.5rem;
+}
+
+.attraction-info h3 {
+  margin-bottom: 0.5rem;
   color: var(--dark-blue);
+}
+
+.attraction-price {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--primary-blue);
+  margin: 1rem 0;
+}
+
+.add-to-cart {
+  width: 100%;
+  padding: 0.8rem;
+  background-color: var(--primary-blue);
+  color: var(--white);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+.add-to-cart:hover {
+  background-color: var(--dark-blue);
+}
+
+/* Ціни */
+#prices {
+  padding: 4rem 0;
+  background-color: var(--light-blue);
+}
+
+.price-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 2rem;
+  background-color: var(--white);
+  box-shadow: var(--shadow);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.price-table th, .price-table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.price-table th {
+  background-color: var(--primary-blue);
+  color: var(--white);
+}
+
+.price-table tr:last-child td {
+  border-bottom: none;
+}
+
+.price-table tr:hover {
+  background-color: #f5f5f5;
+}
+
+/* Про нас */
+#about {
+  padding: 4rem 0;
+}
+
+.about-content {
+  background-color: var(--white);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  margin-top: 2rem;
+}
+
+.about-content p {
+  margin-bottom: 1rem;
+  line-height: 1.8;
+}
+
+/* Футер */
+footer {
+  background-color: var(--dark-blue);
+  color: var(--white);
+  padding: 3rem 0 1rem;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+  margin: 0px 60px;
+}
+
+.footer-section h3 {
   margin-bottom: 1.5rem;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+}
+
+.footer-section p {
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .social-icons {
   display: flex;
-  justify-content: center;
-  gap: 1.5rem;
+  gap: 1rem;
+  margin-top: 1rem;
 }
 
 .social-icons a {
-  color: var(--dark-blue);
-  background: var(--white);
+  color: var(--white);
+  background-color: rgba(255, 255, 255, 0.2);
   width: 40px;
   height: 40px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.2rem;
+
   transition: all 0.3s ease;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
 }
 
 .social-icons a:hover {
-  background: var(--dark-blue);
-  color: var(--white);
+  background-color: var(--primary-blue);
   transform: translateY(-3px);
 }
 
-
-
- /* Підвал */
-footer {
-  position: fixed;
-  bottom: 0;
-    left: 0;
-    right: 0;
-  background: rgba(1, 66, 101, 0.7); /* Напівпрозорий синій */
-  color: var(--white);
+.copyright {
   text-align: center;
-  padding: 1.5rem;
-  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Модальні вікна */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
   width: 100%;
-  backdrop-filter: blur(5px); /* Додаємо ефект розмиття для кращої читабельності */
-  z-index: 10;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow: auto;
 }
 
-
-body.scrolled footer {
-  box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
-  background: rgba(0, 119, 182, 0.9);
+.modal-content {
+  background-color: var(--white);
+  margin: 5% auto;
+  padding: 2rem;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  position: relative;
 }
 
+.close {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  font-size: 1.5rem;
+  color: var(--gray);
+  cursor: pointer;
+}
 
+.close:hover {
+  color: var(--black);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid var(--gray);
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+/* Кошик */
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.cart-item:last-child {
+  border-bottom: none;
+}
+
+.cart-item-info {
+  flex: 1;
+}
+
+.cart-item-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.remove-item {
+  color: red;
+  cursor: pointer;
+}
+
+.cart-total {
+  margin-top: 2rem;
+  text-align: right;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
 
 /* Адаптивність */
 @media (max-width: 768px) {
   header {
-      flex-direction: column;
-      text-align: center;
+    flex-direction: column;
+    padding: 1rem;
   }
-  
-  nav ul {
-      margin-top: 1rem;
-      flex-wrap: wrap;
-      justify-content: center;
-  }
-  
 
-  .contact-cards {
-      flex-direction: column;
+  .logo {
+    margin-bottom: 1rem;
   }
-  
-  .zones .zone-grid {
-      grid-template-columns: 1fr;
+
+  nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .hero h2 {
+    font-size: 2rem;
+  }
+
+  .attractions-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content {
+    padding: 1rem;
+  }
+
+  .hero h2 {
+    font-size: 1.8rem;
+  }
+
+  .modal-content {
+    width: 95%;
+    margin: 10% auto;
+    padding: 1.5rem;
   }
 }
