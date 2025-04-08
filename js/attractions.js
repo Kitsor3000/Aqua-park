@@ -1,9 +1,9 @@
-// Глобальна змінна для зберігання атракціонів
+
 let attractionsData = [];
 
 import { addToCart } from './cart.js';
 
-// Функція для завантаження даних про атракціони
+
 export async function loadAttractions() {
     try {
         const response = await fetch('../data/attractions.json');
@@ -12,19 +12,18 @@ export async function loadAttractions() {
         displayAttractions(attractionsData);
         displayPrices(data.prices);
         
-        // Ініціалізація пошуку та сортування
+       
         initSearch();
         initSort();
     } catch (error) {
         console.error('Помилка завантаження даних:', error);
-        // Якщо не вдалося завантажити JSON, використовуємо вбудовані дані
+        
         const fallbackData = {
             attractions: [
                 {
                     "id": 1,
                     "name": "Гірка Цунамі",
                     "description": "Найвища гірка в нашому аквапарку з падінням з 25 метрів",
-                    "price": 150,
                     "image": "../images/attractions/tsunami1.png",
                     "category": "екстремальні"
                 }
@@ -44,7 +43,7 @@ export async function loadAttractions() {
     }
 }
 
-// Функція для відображення атракціонів
+
 function displayAttractions(attractions) {
     const container = document.getElementById('attractions-container');
     container.innerHTML = '';
@@ -64,18 +63,33 @@ function displayAttractions(attractions) {
                 </div>
                 <div class="attraction-price">${attraction.price} грн</div>
                 <button class="add-to-cart" data-id="${attraction.id}">Додати до кошика</button>
+                
+                
             </div>
         `;
         container.appendChild(card);
     });
     
-    // Додаємо обробники подій для кнопок (варіант 1 - через addEventListener)
+    
+    document.querySelectorAll('.edit-btn').forEach(btn => {
+        btn.addEventListener('click', editAttraction);
+    });
+    
+    document.querySelectorAll('.delete-btn').forEach(btn => {
+        btn.addEventListener('click', deleteAttraction);
+    });
+    
+   
     document.querySelectorAll('.add-to-cart').forEach(button => {
         button.addEventListener('click', addToCartHandler);
     });
+
+    
+    
+    
 }
 
-// Функція для відображення цін
+
 function displayPrices(prices) {
     const container = document.querySelector('.price-tables');
     container.innerHTML = '';
@@ -112,17 +126,17 @@ function displayPrices(prices) {
     }
 }
 
-// Функція для ініціалізації пошуку
+
 function initSearch() {
     const searchInput = document.getElementById('search-input');
     const searchBtn = document.getElementById('search-btn');
     
-    // Варіант 2 - через on[event] властивість
+    
     searchBtn.onclick = function() {
         performSearch(searchInput.value);
     };
     
-    // Пошук при натисканні Enter
+    
     searchInput.addEventListener('keyup', function(e) {
         if (e.key === 'Enter') {
             performSearch(this.value);
@@ -130,7 +144,8 @@ function initSearch() {
     });
 }
 
-// Функція для виконання пошуку
+
+// пош
 function performSearch(query) {
     if (!query.trim()) {
         displayAttractions(attractionsData);
@@ -146,11 +161,11 @@ function performSearch(query) {
     displayAttractions(filtered);
 }
 
-// Функція для ініціалізації сортування
+
 function initSort() {
     const sortSelect = document.getElementById('sort-select');
     
-    // Варіант 3 - через слухача подій з функцією-обробником
+    
     sortSelect.addEventListener('change', function() {
         const value = this.value;
         let sorted = [...attractionsData];
@@ -169,7 +184,7 @@ function initSort() {
                 sorted.sort((a, b) => b.name.localeCompare(a.name));
                 break;
             default:
-                // Сортування за замовчуванням (як в оригінальному масиві)
+               
                 break;
         }
         
@@ -177,25 +192,24 @@ function initSort() {
     });
 }
 
-// Обробник додавання до кошика
+
+// Кор
 function addToCartHandler(e) {
     const attractionId = parseInt(e.target.getAttribute('data-id'));
     const attraction = attractionsData.find(a => a.id === attractionId);
     
     if (attraction) {
-        // Викликаємо функцію з cart.js для додавання товару
+        
         addToCart(attraction);
         
-        // Оновлюємо кількість товарів у кошику
         updateCartCount();
         
-        // Показуємо сповіщення
         showNotification(`${attraction.name} додано до кошика!`);
     }
 }
 
-// Функція для показу сповіщення
-function showNotification(message) {
+   // смс
+ function showNotification(message) {
     const notification = document.createElement('div');
     notification.className = 'notification';
     notification.textContent = message;
@@ -207,7 +221,137 @@ function showNotification(message) {
     }, 3000);
 }
 
-// Експортуємо функції, які будуть використовуватися в інших модулях
-export function getAttractionById(id) {
+
+  export function getAttractionById(id) {
     return attractionsData.find(a => a.id === id);
 }
+
+
+
+
+
+
+function deleteAttraction(e) {
+    if (!checkAuth()) {
+        showNotification('Доступ заборонено', 'error');
+        return;
+    }
+    
+    if (!confirm('Ви впевнені, що хочете видалити цей атракціон?')) return;
+    
+    const attractionId = parseInt(e.target.getAttribute('data-id'));
+    attractionsData = attractionsData.filter(a => a.id !== attractionId);
+    
+     
+    displayAttractions(attractionsData);
+    showNotification('Атракціон успішно видалено');
+}
+
+
+function addNewAttraction() {
+    if (!checkAuth()) {
+        showNotification('Доступ заборонено', 'error');
+        return;
+    }
+    
+
+    const modal = document.createElement('div');
+    modal.className = 'modal';
+    modal.innerHTML = `
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Додати новий атракціон</h2>
+            <form id="add-attraction-form">
+                <div class="form-group">
+                    <label for="add-name">Назва:</label>
+                    <input type="text" id="add-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="add-description">Опис:</label>
+                    <textarea id="add-description" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="add-image">URL зображення:</label>
+                    <input type="url" id="add-image">
+                </div>
+                <div class="form-group">
+                    <label for="add-price">Ціна (грн):</label>
+                    <input type="number" id="add-price" min="0" required>
+                </div>
+                <div class="form-group">
+                    <label for="add-capacity">Місткість (осіб):</label>
+                    <input type="number" id="add-capacity" min="1" required>
+                </div>
+                <div class="form-group">
+                    <label for="add-status">Статус:</label>
+                    <select id="add-status">
+                        <option value="available">Доступний</option>
+                        <option value="maintenance">На обслуговуванні</option>
+                        <option value="closed">Закритий</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-save">Додати атракціон</button>
+            </form>
+        </div>
+    `;
+
+    document.body.appendChild(modal);
+    modal.style.display = 'block';
+
+    
+    modal.querySelector('.close-modal').addEventListener('click', () => {
+        modal.remove();
+    });
+
+    
+    window.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            modal.remove();
+        }
+    });
+
+    
+    document.getElementById('add-attraction-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+       
+        const name = document.getElementById('add-name').value.trim();
+        const description = document.getElementById('add-description').value.trim();
+        const image = document.getElementById('add-image').value.trim();
+        const price = parseInt(document.getElementById('add-price').value);
+        const capacity = parseInt(document.getElementById('add-capacity').value);
+        const status = document.getElementById('add-status').value;
+
+        if (!name || !description) {
+            showNotification('Будь ласка, заповніть обов\'язкові поля', 'error');
+            return;
+        }
+
+        
+        const newAttraction = {
+            id: attractionsData.length > 0 ? Math.max(...attractionsData.map(a => a.id)) + 1 : 1,
+            name,
+            description,
+            image: image || null,
+            price,
+            capacity,
+            status,
+            createdAt: new Date().toISOString(),
+            updatedAt: new Date().toISOString()
+        };
+
+       
+        attractionsData.push(newAttraction);
+        
+      
+        displayAttractions(attractionsData);
+        showNotification('Атракціон успішно додано');
+        modal.remove();
+    });
+}
+
+
+
+
+
+document.getElementById('add-attraction-btn')?.addEventListener('click', addNewAttraction);

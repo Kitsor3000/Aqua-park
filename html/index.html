@@ -14,17 +14,45 @@
             <h1>AquaWave</h1>
         </div>
        
+        <div class="burger-menu">
+            <button id="burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        
+            <div id="menu" class="burger-slide disp">
+                <a class="nav-item block" href="#" class="active">ГОЛОВНА</a>
+                <a class="nav-item block" href="#attractions">АТРАКЦІОНИ</a>
+                <a class="nav-item block" href="#prices">ЦІНИ</a>
+                <a class="nav-item block" href="#about">ПРО НАС</a>
+            </div>
+        </div>
+
+
         <nav>
             <ul>
                 <li><a href="#" class="active">ГОЛОВНА</a></li>
                 <li><a href="#attractions">АТРАКЦІОНИ</a></li>
                 <li><a href="#prices">ЦІНИ</a></li>
                 <li><a href="#about">ПРО НАС</a></li>
-                
+                <li><a href="#" id="login-btn">УВІЙТИ</a></li>
                 <li><a href="#" id="cart-btn"><i class="fas fa-shopping-cart"></i> <span id="cart-count">0</span></a></li>
             </ul>
         </nav>
+        
+
+        <div class="admin-panel">
+        <button class="add-attraction-btn" id="add-attraction-btn">Додати атракціон</button>
+            <button class="logout-btn" id="logout-btn">Вийти</button>
+        </div>
+
     </header>
+
+
+
+
+
 
     <main>
         <section class="hero">
@@ -56,14 +84,14 @@
         <section id="attractions" class="container">
             <h2>Наші атракціони</h2>
             <div class="attractions-grid" id="attractions-container">
-                <!-- Атракціони будуть додані через JavaScript -->
+               
             </div>
         </section>
 
         <section id="prices" class="container">
             <h2>Ціни</h2>
             <div class="price-tables">
-                <!-- Таблиці цін будуть додані через JavaScript -->
+              
             </div>
         </section>
 
@@ -76,15 +104,35 @@
         </section>
     </main>
 
-    
 
-    <!-- Модальне вікно кошика -->
+
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Авторизація адміністратора</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Пароль</label>
+                    <input type="password" id="login-password" required>
+                </div>
+                <button type="submit" class="btn">Увійти</button>
+            </form>
+        </div>
+    </div>
+   
+
+
+    
     <div id="cart-modal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
             <h2>Ваш кошик</h2>
             <div id="cart-items">
-                <!-- Товари будуть додані через JavaScript -->
+                
             </div>
             <div class="cart-total">
                 <p>Загальна сума: <span id="total-price">0</span> грн</p>
@@ -93,6 +141,8 @@
         </div>
     </div>
 
+
+    
     <footer>
         <div class="footer-content">
             <div class="footer-section">
@@ -120,6 +170,9 @@
         </div>
     </footer>
 
+
+    
+    <script src="../js/auth.js" type="module"></script>
     <script src="../js/attractions.js" type="module"></script>
     <script src="../js/cart.js" type="module"></script>
     <script src="../js/main.js" type="module"></script>

@@ -1,17 +1,14 @@
 import { loadAttractions } from './attractions.js';
 import { initCart } from './cart.js';
-
+import { initAuth } from './auth.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Завантаження атракціонів
+    
     loadAttractions();
-    
-    // Ініціалізація кошика
+    initAuth();
     initCart();
-    
+
    
-    
-    // Плавна прокрутка для навігації
     document.querySelectorAll('nav a').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             if (this.hash !== "" && !this.classList.contains('no-scroll')) {
@@ -26,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     
-    // Активний пункт меню при прокрутці
+   
     window.addEventListener('scroll', () => {
         const scrollPosition = window.scrollY;
         
@@ -45,4 +42,21 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+
+  const burger = document.querySelector('#burger');
+  const menu = document.querySelector('#menu');
+    
+  burger.addEventListener('click', () =>  {
+    menu.classList.toggle('disp');
+  });
+    
+        
+  
+  
+  if (checkAuth()) {
+      
+      console.log('Адмін авторизований');
+    }
+    
 });
